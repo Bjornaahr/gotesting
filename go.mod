@@ -1,6 +1,6 @@
 module VekterBackend
 
-go 1.20
+go 1.19
 
 require (
 	github.com/bytedance/sonic v1.8.5 // indirect
