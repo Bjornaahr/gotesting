@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"os"
 	"strconv"
 	"time"
 )
@@ -13,8 +14,14 @@ func main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
 
+		dbHost := os.Getenv("dbhost")
+		dbUser := os.Getenv("dbusename")
+		dbPass := os.Getenv("dbpass")
+		dbName := os.Getenv("dbname")
+		dbPort := os.Getenv("dbport")
+
 		db, err := gorm.Open(postgres.New(postgres.Config{
-			DSN: "user=gorm password=test1234 dbname=gorm port=5432",
+			DSN: fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", dbHost, dbUser, dbPass, dbName, dbPort),
 		}), &gorm.Config{})
 		if err != nil {
 			panic("failed to connect database")
