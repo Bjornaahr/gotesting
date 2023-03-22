@@ -19,9 +19,10 @@ func main() {
 		dbPass := os.Getenv("dbpass")
 		dbName := os.Getenv("dbname")
 		dbPort := os.Getenv("dbport")
+		dbSSL := os.Getenv("dbssl")
 
 		db, err := gorm.Open(postgres.New(postgres.Config{
-			DSN: fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", dbHost, dbUser, dbPass, dbName, dbPort),
+			DSN: fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s, sslmode=%s", dbHost, dbUser, dbPass, dbName, dbPort, dbSSL),
 		}), &gorm.Config{})
 		if err != nil {
 			panic("failed to connect database")
