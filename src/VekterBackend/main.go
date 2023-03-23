@@ -28,7 +28,7 @@ func main() {
 		caCertString = url.QueryEscape(caCertString)
 
 		db, err := gorm.Open(postgres.New(postgres.Config{
-			DSN:                  fmt.Sprintf("host=%s user=%s password=%s dbname=%s port='%s', sslmode=%s", dbHost, dbUser, dbPass, dbName, dbPort, dbSSL),
+			DSN:                  fmt.Sprintf("host=%s user=%s password=%s dbname=%s port='%s', sslmode=%s, sslrootcert=%s", dbHost, dbUser, dbPass, dbName, dbPort, dbSSL, caCertString),
 			PreferSimpleProtocol: true,
 		}), &gorm.Config{})
 		if err != nil {
