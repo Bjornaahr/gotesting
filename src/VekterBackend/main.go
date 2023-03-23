@@ -5,10 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"net/url"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 )
 
@@ -23,9 +21,7 @@ func main() {
 		dbPort := os.Getenv("dbport")
 		dbSSL := os.Getenv("dbssl")
 
-		caCert, err := os.ReadFile("ca-certificate.crt")
-		caCertString := strings.ReplaceAll(string(caCert), "\n", "\\n")
-		caCertString = url.QueryEscape(caCertString)
+		caCertString := "ca-certificate.crt"
 
 		db, err := gorm.Open(postgres.New(postgres.Config{
 			DSN:                  fmt.Sprintf("host=%s user=%s password=%s dbname=%s port='%s', sslmode=%s, sslrootcert=%s", dbHost, dbUser, dbPass, dbName, dbPort, dbSSL, caCertString),
