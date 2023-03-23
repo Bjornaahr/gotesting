@@ -23,13 +23,6 @@ func main() {
 		dbPort := os.Getenv("dbport")
 		dbSSL := os.Getenv("dbssl")
 
-		dbHost = "a"
-		dbUser = "b"
-		dbPass = "c"
-		dbName = "d"
-		dbPort = "e"
-		dbSSL = "f"
-
 		caCert, err := os.ReadFile("ca-certificate.crt")
 		caCertString := strings.ReplaceAll(string(caCert), "\n", "\\n")
 		caCertString = url.QueryEscape(caCertString)
