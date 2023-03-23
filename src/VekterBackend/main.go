@@ -17,7 +17,7 @@ func main() {
 	r.GET("/ping", func(c *gin.Context) {
 
 		dbHost := os.Getenv("dbhost")
-		dbUser := os.Getenv("dbusename")
+		dbUser := os.Getenv("dbusername")
 		dbPass := os.Getenv("dbpass")
 		dbName := os.Getenv("dbname")
 		dbPort := os.Getenv("dbport")
