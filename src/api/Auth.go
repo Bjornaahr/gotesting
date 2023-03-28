@@ -14,10 +14,10 @@ import (
 func CreateUser(context *gin.Context) {
 
 	var createUserStruct struct {
-		Name     string `form:"name" binding:"required"`
-		Email    string `form:"email" binding:"required"`
-		Password string `form:"password" binding:"required"`
-		//DoB      time.Time `form:"DoB" binding:"required"`
+		Name     string    `form:"name" binding:"required"`
+		Email    string    `form:"email" binding:"required"`
+		Password string    `form:"password" binding:"required"`
+		DoB      time.Time `form:"DoB" binding:"required"`
 	}
 
 	hash, err := bcrypt.GenerateFromPassword([]byte(createUserStruct.Password), 10)
